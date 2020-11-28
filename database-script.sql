@@ -123,6 +123,24 @@ CREATE  TABLE IF NOT EXISTS `RecomendacaoDeMusicas`.`PreferenciaMusica` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `RecomendacaoDeMusicas`.`RegistroLogin`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `RecomendacaoDeMusicas`.`registrologin` ;
+
+CREATE  TABLE IF NOT EXISTS `RecomendacaoDeMusicas`.`registrologin` (
+  `Id` INT NOT NULL AUTO_INCREMENT ,
+  `UltimoLogin` CHAR(36) NULL ,
+  PRIMARY KEY (`Id`) ,
+  INDEX `FK_RegistroLogin_Usuario_idx` (`UltimoLogin` ASC) ,
+  CONSTRAINT `FK_RegistroLogin_Usuario`
+    FOREIGN KEY (`UltimoLogin` )
+    REFERENCES `recomendacaodemusicas`.`usuario` (`GuidUsuario` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+
+ENGINE = InnoDB;
+
 USE `RecomendacaoDeMusicas` ;
 
 -- -----------------------------------------------------
